@@ -1,0 +1,130 @@
+<html>
+
+<head>
+	<title></title>
+
+
+	<style>
+
+		html { 
+  background: url(cake.jpeg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+		body{
+
+		cursor: crosshair;
+		
+
+		}
+
+		#ashape {
+
+			width: 250px;
+			height: 250px;
+			background-image:url(fly.png);
+			display:none;
+			position: relative;
+			background-size: 100% 100%;
+			background-color: none;
+		}
+
+		h1 {
+			font-family: impact;
+			font-size: 60px;
+		}
+	
+	</style>
+
+</head>
+
+<body>
+
+<h1> FLY SWATTER </h1>
+<h3>Swat the fly as fast as you can!</h3>
+	<h3>Your Time: <span id="timeTaken"></span> </h3>
+
+	<div id="ashape"></div>
+
+	<script type="text/javascript">
+
+		var start = new Date().getTime();
+
+
+		function getRandomColor() {
+
+			var letters = '0123456789ABCDEF'.split('');
+
+			var color = '#';
+
+			for (var i = 0; i < 6; i++ ) {
+
+				color += letters[Math.floor(Math.random() * 16)];
+
+			}
+
+			 }
+
+
+
+			 <!-- MAKE THE FLY APPEAR --> 
+
+		function shapeappear() {
+
+			var top = Math.random() * 300;
+
+			var left = Math.random() * 600;
+
+			var width = (Math.random() * 200) + 100;
+
+
+			document.getElementById("ashape").style.backgroundColor = getRandomColor();
+
+			document.getElementById("ashape").style.width = width + "px";
+
+			document.getElementById("ashape").style.height = width + "px";
+
+			document.getElementById("ashape").style.top = top + "px";
+
+			document.getElementById("ashape").style.left = left + "px";
+
+			document.getElementById("ashape").style.display = "block";
+
+
+
+			<!-- GET THE TIME -->
+
+
+			start = new Date().getTime();
+		}
+
+		function appearagain() {
+
+			setTimeout(shapeappear, Math.random() * 2000);
+
+		}
+
+		appearagain();
+
+		setTimeout(shapeappear, Math.random() * 2000);
+
+		document.getElementById("ashape").onclick = function() {
+
+			document.getElementById("ashape").style.display = "none";
+
+			var end = new Date().getTime();
+
+			var timeTaken = (end - start) / 1000;
+
+			document.getElementById("timeTaken").innerHTML = timeTaken + "s";
+
+				appearagain();
+		}
+
+
+	</script>
+</body>
+</html>
